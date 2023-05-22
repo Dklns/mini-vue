@@ -21,7 +21,7 @@ function setupStatefulComponent(instance: any) {
 
     const {setup} = Component;
 
-    if(!setup) {
+    if(setup) {
         // 可能返回函数或者对象
         const setupResult = setup();
 
@@ -44,6 +44,5 @@ function finishComponentSetup(instance: any) {
     const Component = instance.type;
 
     instance.render = Component.render;
-    
 }
 
