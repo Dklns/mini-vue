@@ -1,4 +1,4 @@
-import { extent } from "./shared";
+import { extent } from "../shared";
 let activeEffect;
 let shouldTrack;
 
