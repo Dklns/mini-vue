@@ -1,6 +1,6 @@
 import {track, trigger} from './effect';
 import { ReactiveFlags, reactive, readonly } from './reactive';
-import { extent, isObject } from '../shared';
+import * as shared from '../shared';
 
 const get = createGetter();
 const set = createSetter();
@@ -21,7 +21,7 @@ function createGetter(isReadonly = false, isShallow = false) {
             return res;
         }
 
-        if(isObject(res)) {
+        if(shared.isObject(res)) {
             return isReadonly ? readonly(res) : reactive(res); 
         }
 
@@ -56,6 +56,6 @@ export const readonlyHandlers = {
     }
 }
 
-export const shallowReadonlyHandlers = extent({}, readonlyHandlers, {
+export const shallowReadonlyHandlers = shared.extent({}, readonlyHandlers, {
     get: shallowReadonlyGet
 })
