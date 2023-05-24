@@ -1,16 +1,25 @@
 import { h } from "../../lib/guide-mini-vue.esm.js"
 
 const foo = {
-    setup(props) {
-        // props.count
+    setup(props, { emit }) {
+        const emitAdd = () => {
+            console.log('emitAdd');
+            emit('add', 1, 2)
+        }
 
-        console.log(props);
-
-        // 3. props is readonly
-        props.count++;
+        return {
+            emitAdd
+        }
     },
     render() {
-        return h('div', {}, "foo: " + this.count);
+        const btn = h("button",
+            {
+                onClick: this.emitAdd,
+            },
+            "emitAdd");
+
+        const foo = h("p", {}, "foo")
+        return h('div', {}, [btn, foo]);
     }
 }
 
