@@ -56,9 +56,17 @@ function mountElement(vnode: any, container: any) {
         mountChildren(vnode, el);
     }
 
+    const isOn = (key) => /^on[A-Z]/.test(key);
+
     for(let key in props) {
         const value = props[key];
-        el.setAttribute(key, value);
+
+        if(isOn(key)) {
+            const event = key.substring(2).toLowerCase();
+            el.addEventListener(event, value);
+        } else {
+            el.setAttribute(key, value);
+        }
     }
 
     container.append(el);

@@ -6,7 +6,13 @@ export const App = {
         window.self = this;
         return h("div", {
             id: "root",
-            class: ['hard', 'red']
+            class: ['hard', 'red'],
+            onClick() {
+                console.log('click');
+            },
+            onMouseenter() {
+                console.log('enter');
+            }
         },
             // [
             //     h("p", {class: ["red"]}, "hi"),
