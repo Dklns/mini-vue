@@ -14,6 +14,6 @@ function normalizeObjectSlots(children, slots) {
     }
 }
 
-function normalizeSlotsValue(value) {
+function normalizeSlotsValue(value) { 
     return Array.isArray(value) ? value : [value];
 }
